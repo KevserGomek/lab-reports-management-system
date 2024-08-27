@@ -1,9 +1,9 @@
 import React, { useState, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Flex, Card, TextInput, Button, Group, Title } from '@mantine/core'
+import { Flex, Card, TextInput, Button, Group, Title, PasswordInput } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentUser } from '../redux/usersSlice';
+import { setCurrentUser } from '../redux/slices/usersSlice';
 import { RootState } from '../redux/store';
 import '@mantine/notifications/styles.css';
 import { notifications } from '@mantine/notifications';
@@ -99,8 +99,8 @@ const Login: React.FC = () => {
                                 }}
 
                             />
-                            
-                            <TextInput
+
+                            <PasswordInput
                                 variant='filled'
                                 label="Password:"
                                 placeholder="Enter Your Password"

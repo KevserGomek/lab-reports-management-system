@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import reportReducer from './reportsSlice';
-import userReducer from './usersSlice';
+import reportReducer from './slices/reportsSlice';
+import userReducer from './slices/usersSlice';
 import { persistStore, persistReducer } from 'redux-persist';
-import { combineReducers } from 'redux'; //birden fazla reducer birleştirmek için
+import { combineReducers } from 'redux';
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['reports', 'users'],  //kalıcı olarak saklanmasını istediklerin
+  whitelist: ['reports', 'users'],
 };
 
 const rootReducer = combineReducers({

@@ -1,20 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export interface LabTechnician {
-  name: string;
-  id: string;
-}
-
-export interface Report {
-  id: number;
-  patientName: string;
-  patientId: string;     //tc
-  diagnosisTitle: string;
-  diagnosisDetails: string;
-  reportDate: string;
-  photoUrl: string;
-  labTechnician: LabTechnician;
-}
+import { Report } from '../types/reportTypes'; 
+import { LabTechnician } from '../types/reportTypes';
 
 interface ReportsState {
   reports: Report[];

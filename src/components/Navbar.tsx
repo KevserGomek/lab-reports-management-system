@@ -3,7 +3,7 @@ import { Burger, Box, Anchor, Drawer, Title } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { clearCurrentUser } from '../redux/usersSlice';
+import { clearCurrentUser } from '../redux/slices/usersSlice';
 
 const Navbar: React.FC = () => {
 

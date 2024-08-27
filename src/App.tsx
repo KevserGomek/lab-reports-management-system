@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import '@mantine/core/styles.css'; //martine css özellikleri için import edilmesi,
+import '@mantine/core/styles.css';
 import { Routes, Route } from 'react-router-dom';
 import ReportsList from './pages/ReportsList'
 import AddReport from './pages/AddReport'

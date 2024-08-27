@@ -4,7 +4,8 @@ import { Table, Flex, Box, Card, Radio, Group, TextInput, Tooltip } from '@manti
 import { useMediaQuery } from '@mantine/hooks';
 import { RootState } from '../redux/store';
 import { useSelector } from 'react-redux';
-import { Report, deleteReport } from '../redux/reportsSlice'
+import { deleteReport } from '../redux/slices/reportsSlice'
+import { Report } from '../redux/types/reportTypes'
 import { IconTrash, IconEdit } from '@tabler/icons-react';
 import { useDispatch } from 'react-redux';
 import Navbar from '../components/Navbar';
@@ -47,7 +48,7 @@ const ReportsList: React.FC = () => {
         }
 
     };
-    
+
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         const value = event.target.value.toLowerCase();
@@ -64,7 +65,7 @@ const ReportsList: React.FC = () => {
         });
 
         setFilteredReports(filteredResults);
-    
+
     };
 
     const handleDeleteReport = (id: number) => {
@@ -76,14 +77,14 @@ const ReportsList: React.FC = () => {
             setFilteredReports((prevReports) => prevReports.filter(report => report.id !== id));
             dispatch(deleteReport(id))
         } catch (error) {
-            console.log(error)
+            console.log('Error deleting report:', error)
         }
 
     }
 
     const handleViewReportDetail = (report: Report) => {
 
-        navigate(`/report/${report.id}`, { state: { report } }) ;  //report'u state'e atadık
+        navigate(`/report/${report.id}`, { state: { report } });
 
     };
 
@@ -94,7 +95,7 @@ const ReportsList: React.FC = () => {
     };
 
     const rows = filteredReports.map((report) => {
-       
+
         const row = (
 
             <Table.Tr
@@ -149,7 +150,6 @@ const ReportsList: React.FC = () => {
                     }}
                 >
                     <TextInput
-
                         type="search"
                         placeholder="Search..."
                         value={searchValue}
@@ -158,7 +158,6 @@ const ReportsList: React.FC = () => {
                     />
 
                     <Radio
-
                         size='lg'
                         value="checked"
                         label="Sort by date"
@@ -179,7 +178,6 @@ const ReportsList: React.FC = () => {
                         width: isSmallScreen ? '100vw' : '90vw',
                         marginTop: "3rem",
                         marginBottom: isSmallScreen ? '0' : '5rem',
-
                     }}
                 >
                     <Box style={{ overflowX: 'auto' }}>

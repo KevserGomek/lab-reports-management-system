@@ -4,10 +4,11 @@ import { useForm } from '@mantine/form';
 import { DateInput } from '@mantine/dates';
 import { useMediaQuery } from '@mantine/hooks';
 import { useDispatch } from 'react-redux';
-import { addReport, updateReport } from '../redux/reportsSlice'
+import { addReport, updateReport } from '../redux/slices/reportsSlice'
 import { useLocation } from 'react-router-dom'; //state'i karşılamak için
 import '@mantine/dates/styles.css';
 import type { AppDispatch } from '../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 interface ReportFormProps {
     isEditMode: boolean;
@@ -20,6 +21,7 @@ const ReportForm: React.FC<ReportFormProps> = ({ isEditMode }) => { //isEditMode
     const location = useLocation();
     const { report } = location.state || {};
     const isSmallScreen = useMediaQuery('(max-width: 768px)');
+    const navigate = useNavigate();
 
     const form = useForm({
 
@@ -54,10 +56,15 @@ const ReportForm: React.FC<ReportFormProps> = ({ isEditMode }) => { //isEditMode
 
     const handleSubmit = (values: typeof form.values) => {
 
-        if (report) {
-            dispatch(updateReport(values));
-        } else {
-            dispatch(addReport(values));
+        try {
+            if (report) {
+                dispatch(updateReport(values));
+            } else {
+                dispatch(addReport(values));
+            }
+            navigate('/reports')
+        } catch (error) {
+            console.log('Error submitting form', error)
         }
 
     };
@@ -180,8 +187,8 @@ const ReportForm: React.FC<ReportFormProps> = ({ isEditMode }) => { //isEditMode
 
                             <FileInput
                                 variant="filled"
-                                label="Diagnosis Image:"
-                                placeholder={isEditMode ? "Change the diagnosis image" : "Please select the diagnosis image"}
+                                label="Report Image:"
+                                placeholder={isEditMode ? "Change the report image" : "Please select the report image"}
                                 value={fileValue}
                                 size='lg'
                                 onChange={(file) => {

@@ -1,6 +1,6 @@
 import { Card, Image, Text, Group, Flex, Box, Title } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { useLocation } from 'react-router-dom'; //state'i karşılamak için
+import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 const ReportDetail: React.FC = () => {

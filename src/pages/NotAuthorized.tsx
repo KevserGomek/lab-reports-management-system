@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { Flex, Card, Button, Group, Text, Title } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks';
