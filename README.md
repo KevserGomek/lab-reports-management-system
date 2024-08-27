@@ -1,50 +1,92 @@
-# React + TypeScript + Vite
+# Lab Report Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project involves creating a laboratory report management system for a hospital.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run the project locally, follow these steps:
 
-## Expanding the ESLint configuration
+### 1- Clone the Repository
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+First, clone the project from GitHub:
 
-- Configure the top-level `parserOptions` property like this:
+```
+git clone https://github.com/KevserGomek/lab-reports-management-system.git
+```
+  
+### 2- Navigate to the Project Directory
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Change to the project directory:
+
+```
+cd lab-report-management-system
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 3- Install Dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Install the project's dependencies using npm or yarn.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+If you are using npm:
 ```
+npm install
+```
+
+If you are using yarn:
+```
+yarn install
+```
+
+### 4- Start the Project
+
+To start the project in development mode:
+
+```
+npm run dev
+```
+
+or
+
+```
+yarn dev
+```
+
+## Pages
+
+### 1- Login (Home) Page
+The project includes protected routing, and users need to log in to access the pages. Therefore, logging in on this page is required first.
+
+There are two users registered in the system with 'reader' and 'admin' roles:
+
+- To log in as Admin: 
+
+username: admin password: admin123
+- To log in as Reader: 
+
+Username: reader1 Password: reader123
+
+### 2- Reports Page
+Users with both roles can access this page, where reports are listed.
+
+On this page:
+- Users can search by patient ID, patient name, and lab technician name.
+- Reports can be sorted by date.
+- Clicking on a report will redirect the user to another page where the details of the report are displayed.
+
+Additionally, the options column visible ONLY to the admin allows:
+- Deleting a report using the delete button next to the report.
+- Redirecting to the update page of the selected report using the update button next to the report.
+
+### 3- Report Detail Page
+Users with both roles can access this page. It displays all the details of the selected report from the Reports page.
+
+### 4- Update Report Page 
+Accessible only by admin, this page allows updating the details of the selected report from the Reports page.
+
+### 5- Add Report Page
+Accessible only by admin, this page allows adding new reports.
+
+### 6- Not Found Page
+Users are redirected to this page if an invalid URL is entered.
+
+### 7- Not Authorized Page
+Users are redirected to this page if they are not logged in or try to access a page they do not have permission for.
