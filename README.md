@@ -58,9 +58,7 @@ The project includes protected routing, and users need to log in to access the p
 There are two users registered in the system with 'reader' and 'admin' roles:
 
 - To log in as Admin:  username: admin password: admin123
-- To log in as Reader: 
-
-Username: reader1 Password: reader123
+- To log in as Reader: username: reader1 password: reader123
 
 ### 2- Reports Page
 Users with both roles can access this page, where reports are listed.
