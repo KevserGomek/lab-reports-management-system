@@ -5,7 +5,7 @@ import { DateInput } from '@mantine/dates';
 import { useMediaQuery } from '@mantine/hooks';
 import { useDispatch } from 'react-redux';
 import { addReport, updateReport } from '../redux/slices/reportsSlice'
-import { useLocation } from 'react-router-dom'; //state'i karşılamak için
+import { useLocation } from 'react-router-dom';
 import '@mantine/dates/styles.css';
 import type { AppDispatch } from '../redux/store';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 interface ReportFormProps {
     isEditMode: boolean;
 }
-const ReportForm: React.FC<ReportFormProps> = ({ isEditMode }) => { //isEditMode type eklemen gerek sanırım
+const ReportForm: React.FC<ReportFormProps> = ({ isEditMode }) => {
 
     const [fileValue, setFileValue] = useState<File | null>(null);
     const [dateValue, setDateValue] = useState<Date | null>(null);
