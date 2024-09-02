@@ -193,7 +193,15 @@ const ReportForm: React.FC<ReportFormProps> = ({ isEditMode }) => {
                                 size='lg'
                                 onChange={(file) => {
                                     setFileValue(file);
-                                    form.setFieldValue('photoUrl', file ? file.name : '');
+                                    if (file) {
+                                        const reader = new FileReader();
+                                        reader.onloadend = () => {
+                                          form.setFieldValue('photoUrl', reader.result as string);
+                                        };
+                                        reader.readAsDataURL(file);
+                                      } else {
+                                        form.setFieldValue('photoUrl', '');
+                                      }
                                 }}
                                 style={{
                                     width: "100%",

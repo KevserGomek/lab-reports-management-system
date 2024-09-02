@@ -55,7 +55,7 @@ const ReportDetail: React.FC = () => {
                         <Title size="h2" >{report.diagnosisTitle}</Title>
 
                         <Image
-                            src={`/${report.photoUrl}`}
+                            src={report.photoUrl}
                             h={200}
                             alt=""
                             style={{ width: "30%" }}
